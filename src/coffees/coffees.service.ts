@@ -18,12 +18,19 @@ export class CoffeesService {
   ) {}
 
   findAll() {
-    return this.coffeeRepository.find();
+    return this.coffeeRepository.find({
+      relations: {
+        flavors: true,
+      },
+    });
   }
 
   async findOne(id: string) {
     const coffee = await this.coffeeRepository.findOne({
       where: { id: +id },
+      relations: {
+        flavors: true,
+      },
     });
 
     if (!coffee) {
