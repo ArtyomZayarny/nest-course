@@ -1,4 +1,4 @@
-import { Injectable, Module } from '@nestjs/common';
+import { Injectable, Module, Scope } from '@nestjs/common';
 import { CoffeesController } from './coffees.controller';
 import { CoffeesService } from './coffees.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -29,6 +29,7 @@ export class CoffeeBrandsFactory {
       useFactory: (brandsFactory: CoffeeBrandsFactory) =>
         brandsFactory.create(),
       inject: [CoffeeBrandsFactory],
+      scope: Scope.TRANSIENT,
     },
   ],
   controllers: [CoffeesController],
