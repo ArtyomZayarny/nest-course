@@ -12,7 +12,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Flavor } from './entities/flavor.entity';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 //import { Event } from 'src/events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffees.constants';
 import { ConfigService, ConfigType } from '@nestjs/config';
@@ -24,10 +24,8 @@ export class CoffeesService {
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
     @InjectRepository(Coffee)
-    private readonly coffeeRepository: Repository<Coffee>, // private readonly dataSource: DataSource,
-  ) // @Inject(COFFEE_BRANDS) coffeeBrands: string[],
-  // private readonly configService: ConfigService,
-  // @Inject(coffeesConfig.KEY)
+    private readonly coffeeRepository: Repository<Coffee>, // private readonly dataSource: DataSource, // @Inject(COFFEE_BRANDS) coffeeBrands: string[], // private readonly configService: ConfigService,
+  ) // @Inject(coffeesConfig.KEY)
   // private readonly coffeesConfiguration: ConfigType<typeof coffeesConfig>,
   {
     //console.log('coffeesConfiguration', coffeesConfiguration);
