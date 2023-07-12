@@ -16,8 +16,9 @@ export class CoffeesService {
     @InjectModel(Coffee.name) private readonly coffeeModel: Model<Coffee>,
   ) {}
 
-  async findAll() {
-    return await this.coffeeModel.find();
+  async findAll(paginationQuery) {
+    const { offset, limit } = paginationQuery;
+    return await this.coffeeModel.find().skip(offset).limit(limit).exec();
   }
 
   async findOne(id: string) {
